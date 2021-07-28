@@ -13,7 +13,7 @@ class UserWalkForm extends Component { //los formularios son siempre de clase
             role: 'Paseador',
             postalCode: '',
             image: '',
-            email: '',
+            telephone: '',
             experience: '',
             price: '',
             dogTrainer: '',
@@ -82,9 +82,9 @@ class UserWalkForm extends Component { //los formularios son siempre de clase
                                 <Form.Control type="text" value={this.state.postalCode} onChange={this.handleInputChange} name="postalCode" />
                             </Form.Group>
 
-                            <Form.Group controlId="email">
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" placeholder="Enter email" value={this.state.email} onChange={this.handleInputChange} name="email" />
+                            <Form.Group controlId="telf">
+                                <Form.Label>Telefono</Form.Label>
+                                <Form.Control type="text" value={this.state.telephone} onChange={this.handleInputChange} name="telephone" />
                             </Form.Group>
 
                             <Form.Group controlId="experience">

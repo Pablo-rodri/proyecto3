@@ -20,9 +20,14 @@ class UsersList extends Component {
     }
 
     componentDidMount = () => {
+
         this.usersService
             .getAllUser()
-            .then(response => this.setState({ users: response.data })) // valorar si poner setTimeout
+
+            .then(response => {
+                this.setState({ users: response.data })
+                console.log(this.state.users)
+            }) // valorar si poner setTimeout
 
     }
 

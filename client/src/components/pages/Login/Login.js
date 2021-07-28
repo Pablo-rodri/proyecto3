@@ -30,10 +30,8 @@ class Login extends Component {
             .login(userName, password)
             .then(loggedUserfromServer => {
                 this.props.storeUser(loggedUserfromServer.data)
-                this.props.history.push('/mi-perfil')         // Redirect with RRD props
+                this.props.history.push('/mi-perfil')
             })
-            //.catch(err => console.log({ err }))
-            // .catch(err => console.log(err.response.data.message))
             .catch(err => this.props.showAlert(err.response.data.message))
     }
 

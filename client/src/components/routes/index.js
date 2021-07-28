@@ -11,6 +11,7 @@ import DogForm from '../pages/DogForm/DogForm'
 import EditUserWalkForm from '../pages/EditProfile/EditProfile'
 import EditOwnerProfile from '../pages/EditProfile/EditOwnerProfile'
 import DogsPage from '../pages/DogsPage/DogsPage'
+import DogsListOwner from '../pages/DogsPage/DogsListOwner'
 
 
 const Routes = ({ storeUser, loggedUser, showAlert }) => {
@@ -21,15 +22,15 @@ const Routes = ({ storeUser, loggedUser, showAlert }) => {
             <Route path="/usuarios" exact render={() => <UsersPage loggedUser={loggedUser} />} />
             <Route path="/usuarios/crear/paseador" render={props => <UserWalkForm {...props} />} />
             <Route path="/usuarios/crear/dueño" render={props => <UserOwnerForm {...props} />} />
-            <Route path="/usuarios/detalle/:user_id" exact render={props => <UserDetails {...props} />} />
+            <Route path="/usuarios/detalle/:user_id" exact render={props => <UserDetails {...props} showAlert={showAlert} />} />
             <Route path="/iniciar-sesion" render={props => <Login {...props} storeUser={storeUser} showAlert={showAlert} />} />
             <Route path="/mi-perfil" render={() => loggedUser ? <Profile loggedUser={loggedUser} /> : <Redirect to="/" />} />
             <Route path="/otros-servicios" exact render={() => <OtherService />} />
             <Route path="/añadir-perro" render={props => <DogForm loggedUser={loggedUser} {...props} />} />
             <Route path="/usuarios/detalle/editar/:user_id" exact render={props => <EditUserWalkForm {...props} />} />
             <Route path="/usuarios/detalle/editar/dueño/:user_id" render={props => <EditOwnerProfile {...props} />} />
-            {/* <Route path="/perros" exact render={() => <DogsPage loggedUser={loggedUser} />} /> */}
             <Route path="/perros/:user_id" exact render={props => <DogsPage loggedUser={loggedUser} {...props} />} />
+            <Route path="/perros_usuario/:user_id" exact render={props => <DogsListOwner loggedUser={loggedUser} {...props} />} />
         </Switch>
     )
 }

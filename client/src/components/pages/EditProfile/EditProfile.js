@@ -13,12 +13,13 @@ class EditUserWalkForm extends Component {
             role: '',
             postalCode: '',
             image: '',
-            email: '',
+            telephone: '',
             experience: '',
             price: '',
             dogTrainer: '',
             admissionPPP: '',
             maximumDogs: '',
+
         }
         this.userService = new UserService() //lo conectamos con el service de user
     }
@@ -30,28 +31,28 @@ class EditUserWalkForm extends Component {
 
     handleFormSubmit = e => { // gestion envio del formulario
         e.preventDefault()
-
         const user = { ...this.state }
         user.role = this.translateRole(user.role)
-
         this.userService
-            .getOneUser(user)
+            .editUser(user.user_id, user)
             .then(() => this.props.history.push('/usuarios'))
             .catch(err => console.log(err))
     }
 
     componentDidMount = () => {
-        this.userService.editUser(this.props.match.params.user_id).then(response => this.setState({
+        this.userService.getOneUser(this.props.match.params.user_id).then(response => this.setState({
             userName: response.data.userName,
             role: response.data.role,
             postalCode: response.data.postalCode,
             image: response.data.image,
-            email: response.data.email,
+            telephone: response.data.telephone,
             experience: response.data.experience,
             price: response.data.price,
             dogTrainer: response.data.dogTrainer,
             admissionPPP: response.data.admissionPPP,
             maximumDogs: response.data.maximumDogs,
+            user_id: response.data._id,
+            password: response.data.password
         }))
     }
 
@@ -92,9 +93,9 @@ class EditUserWalkForm extends Component {
                                 <Form.Control type="text" value={this.state.postalCode} onChange={this.handleInputChange} name="postalCode" />
                             </Form.Group>
 
-                            <Form.Group controlId="email">
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" placeholder="Enter email" value={this.state.email} onChange={this.handleInputChange} name="email" />
+                            <Form.Group controlId="tel">
+                                <Form.Label>Telefono</Form.Label>
+                                <Form.Control type="text" value={this.state.telephone} onChange={this.handleInputChange} name="telephone" />
                             </Form.Group>
 
                             <Form.Group controlId="experience">
@@ -145,7 +146,7 @@ class EditUserWalkForm extends Component {
                             <Button style={{ marginTop: '20px', width: '100%' }} variant="success" type="submit">Modificar datos</Button>
                             <br />
                             <br />
-                            <Link to="/">
+                            <Link to="/mi-perfil">
                                 <Button variant="success">Volver</Button>
                             </Link>
                             <br />

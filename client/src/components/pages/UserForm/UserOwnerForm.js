@@ -15,7 +15,8 @@ class UserOwnerForm extends Component { //los formularios son siempre de clase
             postalCode: '',
             image: '',
             numberDogs: '',
-            dogsPPP: ''
+            dogsPPP: '',
+            telephone: ''
 
         }
         this.authService = new AuthService() //lo conectamos con el service de user
@@ -76,6 +77,11 @@ class UserOwnerForm extends Component { //los formularios son siempre de clase
                             <Form.Group controlId="desc">
                                 <Form.Label>Contraseña</Form.Label>
                                 <Form.Control type="password" value={this.state.password} onChange={this.handleInputChange} name="password" />
+                            </Form.Group>
+
+                            <Form.Group controlId="contrhsgfol">
+                                <Form.Label>Telefono</Form.Label>
+                                <Form.Control type="text" value={this.state.telephone} onChange={this.handleInputChange} name="telephone" />
                             </Form.Group>
 
                             <Form.Group controlId="control">

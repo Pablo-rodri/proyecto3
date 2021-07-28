@@ -30,10 +30,10 @@ class DogForm extends Component {
     handleFormSubmit = e => {
         e.preventDefault()
 
-        this.dogService // ver en pestaña network del navegador estado 200
+        this.dogService
             .newDog(this.state)
             .then(() => {
-                this.props.history.push('/mi-perfil') //crearlo en un usuario 
+                this.props.history.push('/mi-perfil')
                 this.setState({ name: '', age: '', dogBreed: '', dogPPP: '', observations: '', image: '' })
             })
             .catch(err => console.log(err))
@@ -93,6 +93,8 @@ class DogForm extends Component {
                         <br />
 
                         <h4> Completa todos los datos para facilitar a los paseadores la información para cubrir las nesidades y cuidados de tu mascota</h4>
+                        <br />
+                        <br />
                         <Link className="d-flex justify-content-center x" to="/mi-perfil">
                             <Button className="ov-btn-slide-left" variant="success" size="lg">Regresa a tu perfil</Button>
                         </Link>

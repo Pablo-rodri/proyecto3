@@ -18,6 +18,7 @@ const userSchema = new Schema({
   email: {
     type: String,
   },
+  telephone: { type: String },
   experience: {
     type: String,
   },

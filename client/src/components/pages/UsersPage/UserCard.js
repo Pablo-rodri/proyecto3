@@ -1,7 +1,9 @@
 import { Card, Button } from "react-bootstrap"
 import { Link } from 'react-router-dom'
 
-const UserCard = ({ userName, role, image, _id }) => {
+
+const UserCard = ({ userName, role, image, _id, telephone }) => {
+
     return (
         <>
             {"UserWalk" === role
@@ -12,11 +14,17 @@ const UserCard = ({ userName, role, image, _id }) => {
                         <Card.Body>
 
                             <Card.Title>{userName}</Card.Title>
-                            <Card.Title>Paseador</Card.Title>
+                            <Card.Title>Paseador/Paseadora</Card.Title>
 
-                            <Link to={`/usuarios/detalle/${_id}`}>
+                            <Link className="linkprofile" to={`/usuarios/detalle/${_id}`}>
                                 <Button variant="success" block >Ver detalles</Button>
                             </Link>
+
+                            <Link to={{ pathname: "https://wa.me/" + telephone + "?text=Hola " + userName + " Quiero+contactar+con+usted" }} target="_blank" >
+
+                                <Button className="linkprofile" variant="success" block >Contactar por WhatsApp  </Button>
+                            </Link>
+
                         </Card.Body>
                     </Card>
                 </>
@@ -29,8 +37,13 @@ const UserCard = ({ userName, role, image, _id }) => {
                             <Card.Title>{userName}</Card.Title>
                             <Card.Title>Dueñ@</Card.Title>
 
-                            <Link to={`/usuarios/detalle/${_id}`}>
-                                <Button variant="success" block >Ver detalles</Button>
+                            <Link className="linkprofile" to={`/usuarios/detalle/${_id}`}>
+                                <Button className=".linkprofile" variant="success" block >Ver detalles</Button>
+                            </Link>
+                            <Link to={`/perros_usuario/${_id}`} className="btn btn-warning linkprofile1">Mis perr@s</Link>
+                            <Link to={{ pathname: "https://wa.me/" + telephone + "?text=Hola " + userName + " Quiero+contactar+con+usted" }} target="_blank" >
+
+                                <Button className="linkprofile" variant="success" block >Contactar por WhatsApp  </Button>
                             </Link>
                         </Card.Body>
                     </Card>
@@ -42,3 +55,5 @@ const UserCard = ({ userName, role, image, _id }) => {
 }
 
 export default UserCard
+
+// to={`/perros/${loggedUser._id}`}

@@ -1,26 +1,31 @@
-import { Component } from "react"
-import { Row, Col } from "react-bootstrap"
+import { Component } from 'react'
+import UsersService from '../../../services/user.service'
+import { Container, Row, Col } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import DogService from '../../../services/dog.service'
-import DogsCard from "./DogsCard"
+import DogsCard from './DogsCard'
 
-
-class DogsList extends Component {
+class DogsListOwner extends Component {
 
     constructor() {
+        console.log("prueba")
         super()
         this.state = {
-            dogs: [],
+            dogs: []
         }
         this.dogService = new DogService
+
+
     }
+    componentDidMount() {
 
-    componentDidMount = () => {
-        console.log(this.props)
-        let user_id = this.props
+        const { user_id } = this.props.match.params
+        console.log("hasdgsad")
+        console.log(user_id)
         this.dogService
-            .getAllDogsUser(this.props.loggedUser._id)
+            .getAllDogsUser(user_id)
             .then(response => this.setState({ dogs: response.data }))
-
+            .catch(err => console.log(err))
     }
 
     render() {
@@ -39,8 +44,4 @@ class DogsList extends Component {
         )
     }
 }
-
-export default DogsList
-
-
-
+export default DogsListOwner

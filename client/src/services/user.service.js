@@ -9,7 +9,7 @@ class UserService {
     getAllUser = () => this.app.get('/getAllUser')
     getOneUser = user_id => this.app.get(`/getOneUser/${user_id}`)
     newUser = info_user => this.app.post('/newUser', info_user)
-    editUser = user_id => this.app.put(`/editUser/${user_id}`)
+    editUser = (user_id, info_user) => this.app.put(`/editUser/${user_id}`, info_user)
     // rutas pendientes
 
 }

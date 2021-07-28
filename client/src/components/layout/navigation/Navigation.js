@@ -81,6 +81,7 @@ const Navigation = ({ storeUser, loggedUser, showAlert }) => {
 
                                 <Link className="nav-link" to="/mi-perfil">Perfil</Link>
                                 <Link className="nav-link" to="/" onClick={logout}>Cerrar sesión</Link>
+                                <Link className="nav-link" to="/usuarios">Lista usuari@s</Link>
                                 <Link className="nav-link" to="/otros-servicios">Otros servicios</Link>
                                 <span className="nav-link">¡Bienvenid@, {loggedUser ? loggedUser.userName : 'invitad@'}!</span>
                             </Nav>

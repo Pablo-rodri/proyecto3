@@ -15,7 +15,8 @@ class EditOwnerProfile extends Component {
             postalCode: '',
             image: '',
             numberDogs: '',
-            dogsPPP: ''
+            dogsPPP: '',
+            telephone: ''
 
         }
         this.userService = new UserService()
@@ -24,6 +25,7 @@ class EditOwnerProfile extends Component {
     handleInputChange = e => {
         const { name, value } = e.target
         this.setState({ [name]: value })
+        console.log(this.state)
     }
 
     handleFormSubmit = e => {
@@ -31,23 +33,30 @@ class EditOwnerProfile extends Component {
 
         const user = { ...this.state }
         user.role = this.translateRole(user.role)
-
+        console.log("hola ")
+        console.log(user)
         this.userService
-            .getOneUser(user)
+            .editUser(user.user_id, user)
             .then(() => this.props.history.push('/usuarios'))
             .catch(err => console.log(err))
     }
 
     componentDidMount = () => {
-        this.userService.getOneUser(this.props.match.params.user_id).then(response => this.setState({
-            userName: response.data.userName,
-            role: response.data.role,
-            postalCode: response.data.postalCode,
-            image: response.data.image,
-            experience: response.data.numberDogs,
-            price: response.data.dogsPPP,
+        this.userService.getOneUser(this.props.match.params.user_id).then(response => {
+            console.log(response)
+            this.setState({
+                userName: response.data.userName,
+                role: response.data.role,
+                postalCode: response.data.postalCode,
+                image: response.data.image,
+                experience: response.data.numberDogs,
+                price: response.data.dogsPPP,
+                user_id: response.data._id,
+                password: response.data.password,
+                telephone: response.data.telephone
 
-        }))
+            })
+        })
     }
 
     translateRole(role) {  //metodo para traducir en el formulario de registro el rol
@@ -61,7 +70,7 @@ class EditOwnerProfile extends Component {
 
                 <Row>
                     <Col md={{ span: 8, offset: 2 }}>
-                        <h1>Editar datos</h1>
+                        <h1>Editar datos6</h1>
                         <hr></hr>
                     </Col>
                 </Row>
@@ -86,6 +95,11 @@ class EditOwnerProfile extends Component {
                             <Form.Group controlId="control">
                                 <Form.Label>Codigo Postal</Form.Label>
                                 <Form.Control type="text" value={this.state.postalCode} onChange={this.handleInputChange} name="postalCode" />
+                            </Form.Group>
+
+                            <Form.Group controlId="tele">
+                                <Form.Label>Telefono</Form.Label>
+                                <Form.Control type="text" value={this.state.telephone} onChange={this.handleInputChange} name="telephone" />
                             </Form.Group>
 
                             <Form.Group controlId="ppp">

@@ -15,9 +15,6 @@ router.get('/getAllDog', (req, res) => {
 
 
 
-
-
-
 router.get('/getAllDogsUser/:user_id', (req, res) => {
 
     Dog
@@ -25,15 +22,6 @@ router.get('/getAllDogsUser/:user_id', (req, res) => {
         .then(response => res.json(response))
         .catch(err => res.status(500).json({ code: 500, message: 'Internal Server Error', err }))
 })
-
-
-
-
-
-
-
-
-
 
 
 router.get('/getOneDog/:dog_id', (req, res) => {

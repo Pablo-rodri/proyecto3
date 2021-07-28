@@ -6,7 +6,7 @@ const User = require('./../models/User.model')
 
 
 router.get('/getAllUser', (req, res) => {
-
+    console.log("prueba ")
     User
         .find()
         .then(response => res.json(response))
@@ -35,6 +35,7 @@ router.post('/newUser', (req, res) => {
 router.put('/editUser/:user_id', (req, res) => {
 
     const user = req.body
+    console.log("prueba ")
 
     User
         .findByIdAndUpdate(req.params.user_id, user)

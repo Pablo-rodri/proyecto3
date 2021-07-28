@@ -9,7 +9,7 @@ const User = require('./../models/User.model')
 // Signup (post)
 router.post('/signup', (req, res) => {
     //recoge la info del front/postman
-    const { userName, password, role, postalCode, image, email,
+    const { userName, password, role, postalCode, image, telephone,
         experience, price, dogTrainer, admissionPPP, maximumDogs, numberDogs } = req.body
 
     console.log(req.body)
@@ -27,7 +27,7 @@ router.post('/signup', (req, res) => {
 
             User
                 .create({
-                    userName, password: hashPass, role, postalCode, image, email,
+                    userName, password: hashPass, role, postalCode, image, telephone,
                     experience, price, dogTrainer, admissionPPP, maximumDogs, numberDogs
                 })
                 .then(() => res.json({ code: 200, message: 'User created' }))
