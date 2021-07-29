@@ -1,5 +1,3 @@
-//import { Component } from "react"; //los componentes tienen listas como clases
-// toda la informacion reclamada al servidor va dentro de un estado pq va a tardar en llegar la informcacion
 
 import { Component } from "react"
 import { Row, Col } from "react-bootstrap"
@@ -27,7 +25,9 @@ class UsersList extends Component {
             .then(response => {
                 this.setState({ users: response.data })
                 console.log(this.state.users)
-            }) // valorar si poner setTimeout
+            })
+
+            .catch(err => console.log(err))
 
     }
 

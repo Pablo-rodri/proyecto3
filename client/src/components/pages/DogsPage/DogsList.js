@@ -21,6 +21,8 @@ class DogsList extends Component {
             .getAllDogsUser(this.props.loggedUser._id)
             .then(response => this.setState({ dogs: response.data }))
 
+            .catch(err => console.log(err))
+
     }
 
     render() {

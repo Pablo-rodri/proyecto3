@@ -42,7 +42,7 @@ const Navigation = ({ storeUser, loggedUser, showAlert }) => {
                             <Nav className="mr-auto justify-content-end">
 
                                 <Link className="nav-link" to="/iniciar-sesion">Iniciar sesion</Link>
-                                <Link className="nav-link" to="/usuarios">Lista usuario(prueba)</Link>
+
                                 <Link className="nav-link" to="/otros-servicios">Otros servicios</Link>
 
                             </Nav>
