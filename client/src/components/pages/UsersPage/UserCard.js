@@ -40,7 +40,7 @@ const UserCard = ({ userName, role, image, _id, telephone }) => {
                             <Link className="linkprofile" to={`/usuarios/detalle/${_id}`}>
                                 <Button className=".linkprofile" variant="success" block >Ver detalles</Button>
                             </Link>
-                            <Link to={`/perros_usuario/${_id}`} className="btn btn-warning linkprofile1">Mis perr@s</Link>
+                            <Link to={`/perros_usuario/${_id}`} className="btn btn-warning mydogs">Mis perr@s</Link>
                             <Link to={{ pathname: "https://wa.me/" + telephone + "?text=Hola " + userName + " Quiero+contactar+con+usted" }} target="_blank" >
 
                                 <Button className="linkprofile" variant="success" block >Contactar por WhatsApp  </Button>

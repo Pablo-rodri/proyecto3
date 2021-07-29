@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import UsersService from '../../../services/user.service'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import DogService from '../../../services/dog.service'
 import DogsCard from './DogsCard'
@@ -38,6 +38,10 @@ class DogsListOwner extends Component {
                         <DogsCard {...elm} />
                     </Col>
                 ))}
+
+                <Link className="linkprofile" to="/usuarios">
+                    <Button className=".linkprofile" variant="success" block >Lista de usuari@s</Button>
+                </Link>
 
             </Row>
 
